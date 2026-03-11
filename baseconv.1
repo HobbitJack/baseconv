@@ -1,43 +1,49 @@
-.TH FIB "1" "January 2026" "fib v5.0.0" "User Commands"
+.TH BASECONV "1" "March 2026" "baseconv v1.0.0" "User Commands"
 .SH NAME
-fib \- compute Fibonacci numbers
+baseconv \- convert integer number bases
 .SH SYNOPSIS
 .SY
-.B fib
-[\fI\,OPTION\/\fR]... [\fI\,TARGET\/\fR]...
-.br
-.B fib
-\fB\-m\fR [\fI\,OPTION\/\fR]... [\fI\,TARGET\/\fR]...
+.B baseconv
+[\fI\,OPTION\/\fR]... \-i \fIIBASE\fR \-o \fIOBASE\fR [\fI\,TARGET\/\fR]...
 .YS
 .SH DESCRIPTION
-.B fib
-is a Fibonacci number calculator.
-Using binary expoentiation, it computes the \fITARGET\fRth Fibonacci number in O(log(N)), or when using the \fB\-p\fR flag it wil use the naive O(N) computation.
-With the \fB\-m\fR flag it computes the largest Fibonacci number less than \fITARGET\fR, also using the O(N) computation.
-This program defines the sequence such that F(0)=0, F(1)=1, F(2)=1, F(3)=2, and so on.
+.B baseconv
+converts integer numbers from an input number base
+.I IBASE
+to an output base \fIOBASE\fR.
+Non-integer numbers are not handled.
 .TP
-Output is given as 'TARGET: F(TARGET)\\n'.
-.TP
-If no \fITARGET\fRs are specified on the command line, read them from standard input.
+If no \fINUMBER\fRs are specified on the command line, read them from standard input.
 .SH OPTIONS
 Mandatory options to long options are mandatory for short options too.
+.TP
+\fB\-i\fR, \fB\-\-input-base\fR=\fI\,IBASE\/\fR
+Convert from base \fIIBASE\fR.
+.I IBASE
+may be any base supported by GNU MP.
+.br
+\- Bases [2, 36] use integers, then letters (non-case-sensititve).
+.br
+\- Bases [37, 62] use integers, upper-case letters, then lower-case letters.
+.TP
+\fB\-o\fR, \fB\-\-output-base\fR=\fI\,OBASE\/\fR
+Convert to base \fIOBASE\fR.
+.I OBASE
+may be any base supported by GNU MP.
+.br
+\- Bases [2, 36] use integers, then upper-case letters.
+.br
+\- Bases [-36, -2] use integers, then lower-case letters.
+.br
+\- Bases [37, 62] use integers, upper-case letters, then lower-case letters.
 .TP
 \fB\-l\fR, \fB\-\-loose\-exit\fR
 Change the behavior of the exit status.
 Normally, the program will exit non-zero if any invalid input is provided.
 This flag will change the behavior such that the program will only exit non-zero if a fatal error is encountered.
 .TP
-\fB\-m\fR, \fB\-\-max\-value\fR
-Print largest Fibbonaci number less than \fITARGET\fR.
-This always uses the slower, naive O(N) algorithm.
-.TP
-\fB\-p\fR, \fB\-\-print\-all\fR
-Print the whole Fibonacci sequence up to \fITARGET\fR.
-This always uses the slower, naive O(N) algorithm.
-This disables printing TARGET, even when \fB\-\-quiet\fR is not passed.
-.TP
 \fB\-q\fR, \fB\-\-quiet\fR
-Disable the printing of \fITARGET\fR with the computed number.
+Disable the printing of \fINUMBER\fR in the original base, before the converted number.
 This is probably more useful for scripts, but really probably is never going to be used.
 .TP
 \fB\-s\fR, \fB\-\-silent\fR
@@ -59,4 +65,4 @@ This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 .SH SEE ALSO
 .TP
-\fBcollatz(1)\fR, \fBfactor(1)\fR, \fBpoly(1)\fR
+\fBcollatz(1)\fR, \fBfib(1)\fR, \fBfactor(1)\fR, \fBpoly(1)\fR, \fBprime(1)\fR
