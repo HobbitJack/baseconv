@@ -37,18 +37,6 @@ main(int argc, char *argv[])
 		return 0;
 	}
 
-	if (args.input_base_arg == -1)
-	{
-		fprintf(stderr, "%s: Missing input base\n", progname);
-		return 1;
-	}
-
-	if (args.output_base_arg == -1)
-	{
-		fprintf(stderr, "%s: Missing output base\n", progname);
-		return 1;
-	}
-
 	args.output_base_arg = ((abs(args.output_base_arg) > 2) && (abs(args.output_base_arg) <= 36)) ? -args.output_base_arg : args.output_base_arg;
 
 	if ((abs(args.input_base_arg) < 2) || (args.input_base_arg < -36) || (args.input_base_arg > 62))
