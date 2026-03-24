@@ -4,7 +4,7 @@ baseconv \- convert integer number bases
 .SH SYNOPSIS
 .SY
 .B baseconv
-[\fI\,OPTION\/\fR]... \-i \fIIBASE\fR \-o \fIOBASE\fR [\fI\,NUMBER\/\fR]...
+[\fI\,OPTION\/\fR]... [\fI\,NUMBER\/\fR]...
 .YS
 .SH DESCRIPTION
 .B baseconv
@@ -12,6 +12,11 @@ converts integer numbers from an input number base
 .I IBASE
 to an output base \fIOBASE\fR.
 Non-integer numbers are not handled.
+When
+.I IBASE
+or
+.I OBASE
+is not given, default to base 10.
 .TP
 If no \fINUMBER\fRs are specified on the command line, read them from standard input.
 .SH OPTIONS
